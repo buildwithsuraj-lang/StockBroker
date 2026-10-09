@@ -41,7 +41,7 @@ const Compare =  () => {
     const fetchBrokers = async () => {
       try {
         console.log("hello")
-        const response = await fetch("http://localhost:2000/data");
+        const response = await fetch(`${API_URL}/data`);
          
         if (!response.ok) {
           throw new Error("Failed to fetch brokers");
