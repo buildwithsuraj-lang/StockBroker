@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 
 const Signup = (props) => {
-   const API_URL = process.env.NEXT_PUBLIC_API_URL;
+   const API_URL = process.env.NEXT_PUBLIC_API_URL || null;
      const [isVisible, setIsVisible] = useState(false);
      const [loading, setLoading] = useState(false);
                const [errors, setErrors] = useState({});
