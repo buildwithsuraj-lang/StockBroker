@@ -1,13 +1,11 @@
 import Link from "next/link";
 import { getBrokers } from "../lib/getBrokers";
 const brokers =async() => {
-  const brokerdata = await getBrokers();
+  const brokerdata = await getBrokers()||null;
 
   return (
     <>
-           {if(!brokerdata){
-            return 
-           }}
+       
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end mx-10 mt-10">
 
           <div>
