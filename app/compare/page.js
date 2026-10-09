@@ -37,32 +37,46 @@ const Compare =  () => {
 
 
 
-    useEffect(() => {
-     
-    const fetchBrokers = async () => {
-      try {
-        const response = await fetch(`${API_URL}/data`);
-         
-        if (!response.ok) {
-          throw new Error("Failed to fetch brokers");
-        }
 
-        const dataes = await response.json();
-           
-        console.log("API response:", dataes);
+useEffect(() => {
+  let cancelled = false;
 
-        const brokerList = Array.isArray(dataes.message)
-          ? dataes.message
-          : [];
-
-        setBrok(brokerList);
-      } catch (error) {
-        console.error("Error fetching brokers:", error);
+  async function fetchBrokers() {
+    try {
+      if (!API_URL) {
+        throw new Error("NEXT_PUBLIC_API_URL is missing");
       }
-    };
 
-    fetchBrokers();
-  },[]);
+      const response = await fetch(`${API_URL}/data`);
+
+      if (!response.ok) {
+        throw new Error(`Broker API failed: ${response.status}`);
+      }
+
+      const result = await response.json();
+
+      const brokerList = Array.isArray(result)
+        ? result
+        : Array.isArray(result.message)
+          ? result.message
+          : Array.isArray(result.data)
+            ? result.data
+            : [];
+
+      if (!cancelled) {
+        setBrok(brokerList);
+      }
+    } catch (error) {
+      console.error("Fetch brokers error:", error);
+    }
+  }
+
+  fetchBrokers();
+
+  return () => {
+    cancelled = true;
+  };
+}, [API_URL]);
   const handleSearch = async () => {
     if (!data || !datas) return;
 
