@@ -3,7 +3,7 @@
    import Signup from './Signup';
    import Link from "next/link";
    const Login = (props) => {
-      const API_URL = process.env.NEXT_PUBLIC_API_URL|| null;
+     const API_URL = process.env.NEXT_PUBLIC_API_URL?.replace(/\/+$/, "");
          const [isVisible, setIsVisible] = useState(false);
             const [loading, setLoading] = useState(false);
                const [form,setform]=useState({ email:'', password:'',otp:'' })

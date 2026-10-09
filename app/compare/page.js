@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 
 const Compare =  () => {
-  const API_URL = process.env.NEXT_PUBLIC_API_URL|| null;
+  const API_URL = process.env.NEXT_PUBLIC_API_URL?.replace(/\/+$/, "");
   const [brok, setBrok] = useState([]);
   const [brokers, setBrokers] = useState([]);
   const [data, setData] = useState(""); 

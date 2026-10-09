@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 const Calculator = () => {
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || null;
+  const API_URL = process.env.NEXT_PUBLIC_API_URL?.replace(/\/+$/, "");
   const [tradeType, setTradeType] = useState("equity");
   const [exchange, setExchange] = useState("NSE");
   const [broker, setBroker] = useState("zerodha");

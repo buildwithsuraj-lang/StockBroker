@@ -4,7 +4,7 @@ import { useState,useEffect } from "react";
 import Link from "next/link";
 import Login from "./Login";
 const Header = () => {
-  const API_URL = process.env.NEXT_PUBLIC_API_URL|| null;
+ const API_URL = process.env.NEXT_PUBLIC_API_URL?.replace(/\/+$/, "");
   const [mobileMenu, setMobileMenu] = useState(false);
   const[search,setSearch]=useState("")
  const [login,setlogin]=useState(false);
