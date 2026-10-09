@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { getBrokers } from "../lib/getBrokers";
 const brokers =async() => {
-  const brokerdata = await getBrokers()||null;
+  const brokerdata = await getBrokers()|| null;
 
   return (
     <>
