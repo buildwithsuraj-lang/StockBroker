@@ -5,7 +5,11 @@ const brokers =async() => {
 
   return (
     <>
+<<<<<<< HEAD
        
+=======
+
+>>>>>>> a920563 (forth)
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end mx-10 mt-10">
 
           <div>

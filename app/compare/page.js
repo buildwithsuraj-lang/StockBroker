@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 
 const Compare =  () => {
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
   const [brok, setBrok] = useState([]);
   const [brokers, setBrokers] = useState([]);
   const [data, setData] = useState(""); 
@@ -40,7 +41,13 @@ const Compare =  () => {
      
     const fetchBrokers = async () => {
       try {
+<<<<<<< HEAD
         console.log("hello")
+=======
+       if (!API_URL) {
+throw new Error("NEXT_PUBLIC_API_URL is not configured");
+}
+>>>>>>> a920563 (forth)
         const response = await fetch(`${API_URL}/data`);
          
         if (!response.ok) {
@@ -67,7 +74,7 @@ const Compare =  () => {
     if (!data || !datas) return;
 
     try {
-      const response = await fetch("http://localhost:2000/compare", {
+      const response = await fetch(`${API_URL}/compare`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -96,7 +103,7 @@ const Compare =  () => {
       const first = brok[0].name;
       const second = brok[1].name;
 
-      fetch("http://localhost:2000/compare", {
+      fetch(`${API_URL}/compare`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
